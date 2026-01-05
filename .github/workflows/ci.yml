@@ -1,4 +1,4 @@
-name: CI - Python unittest
+name: Test Python App
 
 on:
   push:
@@ -8,13 +8,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Installer Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.x"
 
-      - name: Run unit tests
-        run: python -m unittest -v
+      - name: Exécuter les tests
+        run: python -m unittest -v test_app.py
