@@ -37,10 +37,14 @@ jobs:
             -Dsonar.projectKey=Loncesergie_tp-ci-cd
             -Dsonar.sources=.
 
+      
       - name: Analyse des dépendances avec Snyk
+        if: ${{ secrets.SNYK_TOKEN != '' }}
         uses: snyk/actions/python@main
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --org=loncesergie
 
   deploy:
     needs: test
