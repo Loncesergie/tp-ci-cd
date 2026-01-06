@@ -37,7 +37,6 @@ jobs:
             -Dsonar.projectKey=Loncesergie_tp-ci-cd
             -Dsonar.sources=.
 
-      # Snyk uniquement sur push (secrets disponibles)
       - name: Analyse des dépendances avec Snyk
         if: github.event_name == 'push'
         uses: snyk/actions/python@main
