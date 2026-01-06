@@ -37,9 +37,9 @@ jobs:
             -Dsonar.projectKey=Loncesergie_tp-ci-cd
             -Dsonar.sources=.
 
-      
+      # Snyk uniquement sur push (secrets disponibles)
       - name: Analyse des dépendances avec Snyk
-        if: ${{ secrets.SNYK_TOKEN != '' }}
+        if: github.event_name == 'push'
         uses: snyk/actions/python@main
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -55,4 +55,3 @@ jobs:
       - name: Déclencher le déploiement sur Render
         run: |
           curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
-
