@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline DevSecOps
 
 on:
   push:
@@ -43,7 +43,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --org=loncesergie
+          args: --org=43a5ff65-3f1b-42b0-b27b-7353a579ceea
 
   deploy:
     needs: test
